@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>百款热门应用展示</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,6 +18,15 @@
             align-items: flex-start;
             min-height: 100vh;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* 响应式容器 */
+        @media (max-width: 640px) {
+            body {
+                padding: 0;
+                background-color: white;
+            }
         }
         
         /* 加载页面样式 */
@@ -38,7 +47,7 @@
         
         .loading-content {
             text-align: center;
-            max-width: 400px;
+            max-width: 90%;
             padding: 20px;
         }
         
@@ -59,7 +68,8 @@
         
         /* 炫酷进度条样式 */
         .progress-container {
-            width: 300px;
+            width: 80%;
+            max-width: 300px;
             height: 10px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
@@ -133,18 +143,26 @@
             50% { transform: scale(1.2); opacity: 1; }
         }
         
-        /* 主容器 - 固定手机大小 */
+        /* 主容器 - 自适应手机大小 */
         .mobile-container {
             width: 100%;
-            max-width: 480px;
+            max-width: 100%;
             min-height: 100vh;
             background-color: white;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
             overflow-x: hidden;
             position: relative;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        @media (min-width: 641px) {
+            .mobile-container {
+                max-width: 480px;
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+                margin: 20px auto;
+                border-radius: 20px;
+            }
         }
         
         .mobile-container.show {
@@ -167,20 +185,37 @@
             animation-play-state: paused;
         }
         
-        /* 走马灯图标容器 - 正方形 */
+        /* 走马灯图标容器 - 正方形，自适应 */
         .marquee-icon-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 70px;
-            height: 70px;
-            margin: 0 8px;
+            width: 60px;
+            height: 60px;
+            margin: 0 6px;
             border-radius: 12px;
             background-color: #f8fafc;
             transition: all 0.3s ease;
             text-decoration: none;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+        }
+        
+        @media (min-width: 375px) {
+            .marquee-icon-container {
+                width: 65px;
+                height: 65px;
+                margin: 0 8px;
+            }
+        }
+        
+        @media (min-width: 414px) {
+            .marquee-icon-container {
+                width: 70px;
+                height: 70px;
+                margin: 0 10px;
+            }
         }
         
         .marquee-icon-container:hover {
@@ -190,19 +225,19 @@
         }
         
         .marquee-img {
-            width: 40px;
-            height: 40px;
+            width: 70%;
+            height: 70%;
             object-fit: contain;
-            margin-bottom: 5px;
             border-radius: 8px;
         }
         
         .marquee-icon-text {
-            font-size: 11px;
+            font-size: 10px;
             color: #3b82f6;
             font-weight: 500;
             text-align: center;
             line-height: 1.2;
+            margin-top: 2px;
         }
         
         /* 轮播图样式 - 自适应图片尺寸 */
@@ -210,8 +245,15 @@
             position: relative;
             width: 100%;
             overflow: hidden;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 375px) {
+            .carousel-container {
+                border-radius: 16px;
+            }
         }
         
         .carousel-slide {
@@ -228,20 +270,40 @@
         
         .carousel-img {
             width: 100%;
-            height: 250px;
+            height: 180px;
             object-fit: cover;
             display: block;
         }
         
+        @media (min-width: 375px) {
+            .carousel-img {
+                height: 200px;
+            }
+        }
+        
+        @media (min-width: 414px) {
+            .carousel-img {
+                height: 220px;
+            }
+        }
+        
         /* 轮播图指示器 */
         .carousel-indicator {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.5);
-            margin: 0 4px;
+            margin: 0 3px;
             cursor: pointer;
             transition: all 0.3s ease;
+        }
+        
+        @media (min-width: 375px) {
+            .carousel-indicator {
+                width: 10px;
+                height: 10px;
+                margin: 0 4px;
+            }
         }
         
         .carousel-indicator.active {
@@ -260,16 +322,22 @@
             height: 0;
             padding-bottom: 100%; /* 保持正方形 */
             background-color: #f8fafc;
-            border-radius: 16px;
+            border-radius: 12px;
             position: relative;
             transition: all 0.3s ease;
             text-decoration: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        @media (min-width: 375px) {
+            .grid-icon-container {
+                border-radius: 16px;
+            }
         }
         
         .grid-icon-container:hover {
-            transform: scale(1.08);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
             background-color: #eff6ff;
         }
         
@@ -283,39 +351,64 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 8px;
         }
         
         .grid-img {
-            width: 40px;
-            height: 40px;
+            width: 55%;
+            max-width: 36px;
+            height: auto;
             object-fit: contain;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             border-radius: 8px;
         }
         
         .grid-icon-text {
-            font-size: 12px;
+            font-size: 11px;
             color: #3b82f6;
             font-weight: 500;
             text-align: center;
             line-height: 1.2;
+            max-width: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        @media (min-width: 375px) {
+            .grid-icon-text {
+                font-size: 12px;
+            }
         }
         
         /* 内容区域内边距 */
         .content-section {
-            padding: 20px;
+            padding: 15px;
+        }
+        
+        @media (min-width: 375px) {
+            .content-section {
+                padding: 20px;
+            }
         }
         
         /* 标题样式 */
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #1f2937;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
+        }
+        
+        @media (min-width: 375px) {
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+            }
         }
         
         .section-title::after {
@@ -324,10 +417,16 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
+            width: 50px;
             height: 3px;
             background: linear-gradient(90deg, #3b82f6, #8b5cf6);
             border-radius: 3px;
+        }
+        
+        @media (min-width: 375px) {
+            .section-title::after {
+                width: 60px;
+            }
         }
         
         /* 滚动条样式 */
@@ -335,7 +434,13 @@
             overflow: hidden;
             position: relative;
             width: 100%;
-            padding: 10px 0;
+            padding: 8px 0;
+        }
+        
+        @media (min-width: 375px) {
+            .marquee-wrapper {
+                padding: 10px 0;
+            }
         }
         
         /* 轮播按钮样式 */
@@ -345,8 +450,8 @@
             transform: translateY(-50%);
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -355,6 +460,22 @@
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+        
+        @media (min-width: 375px) {
+            .carousel-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (min-width: 414px) {
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+            }
         }
         
         .carousel-btn:hover {
@@ -363,20 +484,57 @@
         }
         
         .carousel-btn-prev {
-            left: 10px;
+            left: 8px;
         }
         
         .carousel-btn-next {
-            right: 10px;
+            right: 8px;
+        }
+        
+        @media (min-width: 375px) {
+            .carousel-btn-prev {
+                left: 10px;
+            }
+            
+            .carousel-btn-next {
+                right: 10px;
+            }
         }
         
         /* 页脚样式 */
         .footer {
             text-align: center;
-            padding: 15px;
+            padding: 12px 15px;
             color: #6b7280;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             border-top: 1px solid #f3f4f6;
+            line-height: 1.4;
+        }
+        
+        @media (min-width: 375px) {
+            .footer {
+                font-size: 0.85rem;
+                padding: 15px;
+            }
+        }
+        
+        /* 网格布局调整 */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        @media (min-width: 375px) {
+            .icon-grid {
+                gap: 12px;
+            }
+        }
+        
+        @media (min-width: 414px) {
+            .icon-grid {
+                gap: 14px;
+            }
         }
     </style>
 </head>
@@ -387,7 +545,7 @@
             <div class="loading-logo">
                 <i class="fas fa-rocket"></i>
             </div>
-            <div class="loading-text">百款热门应用</div>
+            <div class="loading-text">百款热门应用即将到了</div>
             
             <div class="progress-container">
                 <div class="progress-bar" id="progressBar"></div>
@@ -406,13 +564,13 @@
     <!-- 主内容容器 -->
     <div class="mobile-container">
         <!-- 顶部走马灯图标 -->
-        <section class="content-section pt-6">
-            
+        <section class="content-section pt-4">
+            <h2 class="section-title">热门应用走马灯</h2>
             <div class="marquee-wrapper">
                 <div class="marquee">
                     <!-- 走马灯图标 - 使用图片 -->
                     <!-- 第一组图标 -->
-                    <a href="https://pp.eeennn136.xyz/website/detail/id/208.html" target="_blank" class="marquee-icon-container">
+                   <a href="https://pp.eeennn136.xyz/website/detail/id/208.html" target="_blank" class="marquee-icon-container">
                         <img src="https://imgsa.baidu.com/forum/pic/item/3b292df5e0fe9925afd21c4172a85edf8cb171c0.jpg" 
                              alt="Hot.1" class="marquee-img">
                         <span class="marquee-icon-text">Hot.1
@@ -521,7 +679,7 @@
 
         <!-- 中间图片轮播 -->
         <section class="content-section">
-            
+            <h2 class="section-title">热门应用展示</h2>
             <div class="carousel-container">
                 <div class="carousel-slide">
                     <!-- 轮播图片链接数组 - 方便替换 -->
@@ -549,12 +707,6 @@
                                  alt="Mobile Apps" class="carousel-img">
                         </a>
                     </div>
-                    <div class="carousel-item">
-                        <a href="https://487平等公正.爱国敬业.新疆铁道职业技术学院.com:26548/GAgpj" target="_blank">
-                            <img src="https://img.xmshengchao.com:1688/images/f60a46c6-b6a1-4fe9-a2d2-940bba27ba37" 
-                                 alt="App Development" class="carousel-img">
-                        </a>
-                    </div>
                 </div>
                 
                 <!-- 左右按钮 -->
@@ -571,21 +723,17 @@
                     <div class="carousel-indicator" data-index="1"></div>
                     <div class="carousel-indicator" data-index="2"></div>
                     <div class="carousel-indicator" data-index="3"></div>
-                    <div class="carousel-indicator" data-index="4"></div>
                 </div>
             </div>
         </section>
 
         <!-- 底部图标网格 -->
         <section class="content-section pb-8">
+            <h2 class="section-title">热门应用网格</h2>
             
-            
-            <div id="iconGrid" class="grid grid-cols-4 gap-4">
+            <div id="iconGrid" class="icon-grid">
                 <!-- 网格图标 - 使用图片 -->
-                        
-						 
-						 	
-						<div class="grid-item relative">
+                	<div class="grid-item relative">
                     <a href="https://afs.i1pu5d.cyou/?channelCode=777hgllq" target="_blank" class="grid-icon-container">
                         <div class="grid-icon-content">
                             <img src="https://ba48de.qolk1059.com/v2afiles/img_url-a85463c4f88cde1a9f8bf643eaf87e99.gif" 
@@ -861,7 +1009,7 @@
         
         <!-- 页脚 -->
         <div class="footer">
-		<a href="https://t.me/xiaocaishen86" target="_blank">广告合作</a>
+            <a href="https://t.me/xiaocaishen86" target="_blank">广告合作</a>
             <p>© 2022 百款热门应用</p>
             <p class="mt-1">All Rights Reserved</p>
         </div>
