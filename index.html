@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>百款热门应用展示</title>
+    <title>热门APP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -240,7 +240,7 @@
             margin-top: 2px;
         }
         
-        /* 轮播图样式 - 自适应图片尺寸 */
+        /* 轮播图样式 - 完全自适应 */
         .carousel-container {
             position: relative;
             width: 100%;
@@ -248,6 +248,7 @@
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             margin: 0 auto;
+            background-color: #f8fafc;
         }
         
         @media (min-width: 375px) {
@@ -268,23 +269,31 @@
             position: relative;
         }
         
-        .carousel-img {
+        /* 修复轮播图图片自适应问题 */
+        .carousel-img-wrapper {
+            position: relative;
             width: 100%;
-            height: 180px;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            overflow: hidden;
+            border-radius: inherit;
+        }
+        
+        .carousel-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
         }
         
-        @media (min-width: 375px) {
-            .carousel-img {
-                height: 200px;
-            }
-        }
-        
-        @media (min-width: 414px) {
-            .carousel-img {
-                height: 220px;
-            }
+        /* 确保图片链接覆盖整个区域 */
+        .carousel-item a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
         }
         
         /* 轮播图指示器 */
@@ -545,7 +554,7 @@
             <div class="loading-logo">
                 <i class="fas fa-rocket"></i>
             </div>
-            <div class="loading-text">百款热门应用即将到了</div>
+            <div class="loading-text">百款热门APP</div>
             
             <div class="progress-container">
                 <div class="progress-bar" id="progressBar"></div>
@@ -565,12 +574,12 @@
     <div class="mobile-container">
         <!-- 顶部走马灯图标 -->
         <section class="content-section pt-4">
-            <h2 class="section-title">热门应用走马灯</h2>
+            <h2 class="section-title">热门APP</h2>
             <div class="marquee-wrapper">
                 <div class="marquee">
                     <!-- 走马灯图标 - 使用图片 -->
                     <!-- 第一组图标 -->
-                   <a href="https://pp.eeennn136.xyz/website/detail/id/208.html" target="_blank" class="marquee-icon-container">
+                    <a href="https://pp.eeennn136.xyz/website/detail/id/208.html" target="_blank" class="marquee-icon-container">
                         <img src="https://imgsa.baidu.com/forum/pic/item/3b292df5e0fe9925afd21c4172a85edf8cb171c0.jpg" 
                              alt="Hot.1" class="marquee-img">
                         <span class="marquee-icon-text">Hot.1
@@ -676,35 +685,51 @@
                 </div>
             </div>
         </section>
-
         <!-- 中间图片轮播 -->
         <section class="content-section">
-            <h2 class="section-title">热门应用展示</h2>
+            
             <div class="carousel-container">
                 <div class="carousel-slide">
                     <!-- 轮播图片链接数组 - 方便替换 -->
+                    <!-- 注意：使用16:9比例的图片以确保最佳显示效果 -->
                     <div class="carousel-item">
-                        <a href="https://c1121h3b.5086625.top:5088/facai.html?xm8050" target="_blank">
-                            <img src="https://xm99.img4758972832.com:5658/8888/xm/5088/320x185.gif" 
-                                 alt="App Store" class="carousel-img">
-                        </a>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="https://45660801.sizled.com/?cid=310446" target="_blank">
-                            <img src="https://img.alicdn.com/imgextra/i3/4183327079/O1CN01vQ2ysK22AEokQZeiA_!!4183327079.gif" 
-                                 alt="Google Play" class="carousel-img">
+                        <a href="http://ryaud-177937303.ap-east-1.elb.amazonaws.com/987x60/?shareName=987x60" target="_blank">
+                            <div class="carousel-img-wrapper">
+                                <img src="https://olrlw58e.5rrlenryyei82d.cyou/upload/vod/20251123-1/4a9a42b34777a6e2b17576b9d52e9a5f.gif" 
+                                     alt="App Store" class="carousel-img">
+                            </div>
                         </a>
                     </div>
                     <div class="carousel-item">
                         <a href="https://64.f64274929.com/" target="_blank">
-                            <img src="https://qrsa.yxai123.com/9864a346cb19ec5b0bb352fb6c059678.gif" 
-                                 alt="Hot.3 Store" class="carousel-img">
+                            <div class="carousel-img-wrapper">
+                                <img src="https://qrsa.yxai123.com/9864a346cb19ec5b0bb352fb6c059678.gif" 
+                                     alt="Google Play" class="carousel-img">
+                            </div>
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <a href="https://www.tfboys66.com/nice.htm?10175" target="_blank">
-                            <img src="https://www.n55abc.com/tt60400.gif" 
-                                 alt="Mobile Apps" class="carousel-img">
+                        <a href="https://45660801.sizled.com/?cid=310446" target="_blank">
+                            <div class="carousel-img-wrapper">
+                                <img src="https://img.alicdn.com/imgextra/i3/4183327079/O1CN01vQ2ysK22AEokQZeiA_!!4183327079.gif" 
+                                     alt="Microsoft Store" class="carousel-img">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="https://c1121h3b.5086625.top:5088/facai.html?xm8050" target="_blank">
+                            <div class="carousel-img-wrapper">
+                                <img src="https://xm99.img4758972832.com:5658/8888/xm/5088/320x185.gif" 
+                                     alt="Mobile Apps" class="carousel-img">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="https://afs.i1pu5d.cyou/?channelCode=777hgllq" target="_blank">
+                            <div class="carousel-img-wrapper">
+                                <img src="https://www.uxmum.top/images/683acd82bb50e4b4629db017.gif" 
+                                     alt="App Development" class="carousel-img">
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -723,17 +748,18 @@
                     <div class="carousel-indicator" data-index="1"></div>
                     <div class="carousel-indicator" data-index="2"></div>
                     <div class="carousel-indicator" data-index="3"></div>
+                    <div class="carousel-indicator" data-index="4"></div>
                 </div>
             </div>
         </section>
 
         <!-- 底部图标网格 -->
         <section class="content-section pb-8">
-            <h2 class="section-title">热门应用网格</h2>
+            <h2 class="section-title">站长推荐APP</h2>
             
             <div id="iconGrid" class="icon-grid">
                 <!-- 网格图标 - 使用图片 -->
-                	<div class="grid-item relative">
+                <div class="grid-item relative">
                     <a href="https://afs.i1pu5d.cyou/?channelCode=777hgllq" target="_blank" class="grid-icon-container">
                         <div class="grid-icon-content">
                             <img src="https://ba48de.qolk1059.com/v2afiles/img_url-a85463c4f88cde1a9f8bf643eaf87e99.gif" 
@@ -1010,7 +1036,7 @@
         <!-- 页脚 -->
         <div class="footer">
             <a href="https://t.me/xiaocaishen86" target="_blank">广告合作</a>
-            <p>© 2022 百款热门应用</p>
+            <p>© 2022 百款热门APP</p>
             <p class="mt-1">All Rights Reserved</p>
         </div>
     </div>
